@@ -1,15 +1,14 @@
 #importing csv
 import pandas as pd
 
+print("\n=== DATA IMPORTS AND FILTERING FOR CHRISTCHURCH===")
 # (1) importing listings_19062026.csv
 listings_19_06_2026 = pd.read_csv("listings_19062026.csv")
 print(listings_19_06_2026.head())
+print(f"listings_19062026.csv imported successfully!")
 
 #display listings_19062026.csv columns
 print(listings_19_06_2026.columns)
-
-#print column 'neighbourhood_group' values to find name used for Christchurch
-print(listings_19_06_2026['neighbourhood_group'].unique())
 
 #filter for listings in 'Christchurch City' only
 listings_19_06_2026 = listings_19_06_2026[listings_19_06_2026['neighbourhood_group'] == 'Christchurch City']
@@ -19,18 +18,6 @@ print(listings_19_06_2026)
 listings_19_06_2026['month_year'] = '06-2026'
 listings_19_06_2026.to_csv('listings_19_06_2026.csv', index=False)
 print(f"New column 'month_year' added successfully!")
-
-#view new column 'month_year'
-print(listings_19_06_2026.month_year)
-
-#-----automation loop-----
-
-#files = ["listings_23052026.csv", "listings_16042026.csv", "listings_17032026.csv", "listings_13022026.csv", "listings_16012026.csv", "listings_11122025.csv", "listings_07112025.csv", "listings_05102025.csv", "listings_06092025.csv", "listings_03082025.csv"]
-
-#importing all listings csv files
-#for file in files:
-    #df_1 = pd.read_csv(file)
-    #print(df_1.shape)
 
 #repeating the same steps for the rest of the listings csvs
 # (2) importing listings_23052026.csv
@@ -217,10 +204,12 @@ print(f"New column 'month_year' added successfully!")
 #view new column 'month_year'
 print(listings_05_10_2025.month_year)
 
+print("\n=== CONCATENATION PROCESS FOR CHRISTCHURCH===")
+
 #concatenate all prepared csvs into one Christchurch file
 import glob
 
-listings_files = ["listings_19_06_2026.csv", 
+listings_files = ["listings_20_06_2026.csv", 
                   "listings_23_05_2026.csv",
                   "listings_16_04_2026.csv",
                   "listings_17_03_2026.csv",
@@ -260,6 +249,8 @@ for filename in listings_files:
     all_dfs.append(temp_df)
 
 df = pd.concat(all_dfs, ignore_index=True)
+
+print("\n=== Concatenation process complete and saved into new csv===")
 
 print("Concatenation complete")
 print(f"Rows: {len(df)}")
@@ -323,40 +314,6 @@ plt.ylabel('Number of Listings') #y-label
 plt.show()
 plt.close()
 
-# (2) calculate how long ago the last review was in days (difference between scrape/publish date and last review date) & plot new feature
-#making sure the 'last_review' column is a date
-
-#extracting the dates from filename instead of the above method
-#filename = file.stem
-#df["publish_date"] = publish_date
-# Example: listings_16_01_2026
-
-#for filename in listings_files:
-   # parts = filename.split("_")
-
-   # day = parts[-3]
-   # month = parts[-2]
-    #year = parts[-1].replace(".csv", "")
-
-   # month_year = f"{month}_{year}"
-
-   # publish_date = pd.to_datetime(
-       # f"{day}/{month}/{year}",
-      #  format="%d/%m/%Y"
-   # )
-
-   # df["publish_date"] = publish_date
-
-   # print(month_year, [publish_date])
-
-#create new column published_date
-#df["publish_date"] = publish_date
-
-
-#df["month_year"] = month_year
-#df["publish_date"] = publish_date
-
-#print(df.columns.tolist())
 
 #making sure the last_revies column is a date_time
 df["last_review"] = pd.to_datetime(
@@ -372,27 +329,18 @@ df["days_since_review"] = (
 
 print(df[["last_review", "publish_date", "days_since_review"]])
 
-#since I had a couple negative values in the days_since_review column, I'm checking to see why
-print(
-    df[df["days_since_review"] < 0][
-        ["last_review", "publish_date", "days_since_review"]
-    ].head(20)
-)
-
+print("\n=== NUMBER OF LISTINGS BY PUBLISH DATE ===")
+#counting how many records were published on each date
 print(df["publish_date"].value_counts())
 
-print(sorted(df["publish_date"].unique()))
+#
+#print(sorted(df["publish_date"].unique()))
 
-print((df["days_since_review"] < 0).sum())
+#print((df["days_since_review"] < 0).sum())
 
-print(
-    (df["days_since_review"] < 0).mean() * 100
-)
-
-#print(df["days_since_review"].describe())
-
-
-
+#print(
+    #(df["days_since_review"] < 0).mean() * 100
+#)
 
 
 # (3) find how many properties get the highest numbers of reviews in Christchurch
