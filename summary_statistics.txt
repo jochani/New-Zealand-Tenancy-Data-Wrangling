@@ -1,0 +1,48 @@
+=== NUMERICAL SUMMARY STATISTICS ===
+                                  count                        mean                  min                  25%                    50%                    75%                    max                   std
+id                              28795.0        903062686517304320.0             204050.0           52371093.0  1089973018895629312.0  1393915756805132032.0  1709885808209520384.0  594529721388448000.0
+host_id                         28795.0         1988281224095730.25              57382.0           63955373.0            172147331.0            447145180.0  1704736854722722048.0   57829989306664184.0
+latitude                        28795.0                  -43.555493            -43.86751           -43.556188              -43.53241             -43.521706              -43.41634               0.07628
+longitude                       28795.0                  172.661295           172.433375            172.61691              172.63958              172.65997             173.097001              0.096666
+price                           18128.0                  260.199636                 27.0                140.0                  205.0                  284.0                43654.0            943.721501
+minimum_nights                  28758.0                    1.787537                  1.0                  1.0                    1.0                    2.0                  365.0              5.509471
+number_of_reviews               28795.0                     70.3917                  0.0                  5.0                   26.0                   85.0                 1584.0            120.513512
+reviews_per_month               26168.0                    2.350719                 0.01                 0.76                    1.7                   3.33                  16.57              2.185566
+calculated_host_listings_count  28795.0                   58.297031                  1.0                  1.0                    3.0                   47.0                 1586.0             188.53271
+availability_365                28795.0                  203.804792                  0.0                109.0                  225.0                  302.0                  365.0            112.282973
+number_of_reviews_ltm           28795.0                   18.996909                  0.0                  2.0                   10.0                   27.0                  185.0             23.502198
+license                             0.0                         NaN                  NaN                  NaN                    NaN                    NaN                    NaN                   NaN
+publish_date                      28795  2026-02-16 08:24:50.258725  2025-10-05 00:00:00  2025-12-11 00:00:00    2026-02-13 00:00:00    2026-04-16 00:00:00    2026-06-19 00:00:00                   NaN
+
+=== CATEGORICAL SUMMARY STATISTICS ===
+                     count unique                   top   freq
+name                 28795   4854  Room in Christchurch     23
+host_name            28794   1422   Paula Kat Charlotte   1561
+neighbourhood_group  28795      1     Christchurch City  28795
+neighbourhood        28795     16          Central Ward  10554
+room_type            28795      4       Entire home/apt  22765
+last_review          26168    745            2026-02-28    364
+month_year           28795      9               06_2026   3469
+
+=== MISSING VALUES SUMMARY ===
+                                missing_values
+id                                           0
+name                                         0
+host_id                                      0
+host_name                                    1
+neighbourhood_group                          0
+neighbourhood                                0
+latitude                                     0
+longitude                                    0
+room_type                                    0
+price                                    10667
+minimum_nights                              37
+number_of_reviews                            0
+last_review                               2627
+reviews_per_month                         2627
+calculated_host_listings_count               0
+availability_365                             0
+number_of_reviews_ltm                        0
+license                                  28795
+month_year                                   0
+publish_date                                 0
