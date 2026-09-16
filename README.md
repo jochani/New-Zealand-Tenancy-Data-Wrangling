@@ -41,14 +41,6 @@ This project uses the New Zealand Airbnb listings dataset published by Inside Ai
   * Dropped `neighbourhood_group` because it contained one redundant static text `"Christchurch City"` after filtering out the concatenated dataset for Christchurch City only.
   * Dropped `last_review` and `reviews_per_month` because review activity is outside the focus of the planned rental-price and property-availability analysis.
 
-## Dataset 2
-
-**Dataset:** Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv
-- **Dataset Date:** January 2020 to April 2026
-- **Geographic Coverage:** New Zealand 
-- **Source:** https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/
-- **Purpose:** Detailed quarterly tenancy bond statistics and rental price metrics for New Zealand residential properties, categorized by location, dwelling type, and bedroom count.
-
 **Christchurch Airbnb data cleaning**
 
 The combined dataset contained 28,795 observations covering October 2025 to June 2026. No exact duplicates or duplicate listing-month combinations were identified.
@@ -62,6 +54,14 @@ Both same-listing temporal estimation and KNN estimation were investigated. The 
 Eight extreme within-listing price changes were flagged for investigation but not automatically removed. This preserves the original observed data while allowing potentially unusual observations to be identified during later analysis.
 
 The final cleaned dataset contains 28,795 rows and 19 columns and is stored as a compressed CSV for space efficiency.
+
+## Dataset 2
+
+**Dataset:** Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv
+- **Dataset Date:** January 2020 to April 2026
+- **Geographic Coverage:** New Zealand 
+- **Source:** https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/
+- **Purpose:** Detailed quarterly tenancy bond statistics and rental price metrics for New Zealand residential properties, categorized by location, dwelling type, and bedroom count.
 
 ## Important Columns
 
