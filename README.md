@@ -49,6 +49,20 @@ This project uses the New Zealand Airbnb listings dataset published by Inside Ai
 - **Source:** https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/
 - **Purpose:** Detailed quarterly tenancy bond statistics and rental price metrics for New Zealand residential properties, categorized by location, dwelling type, and bedroom count.
 
+**Christchurch Airbnb data cleaning**
+
+The combined dataset contained 28,795 observations covering October 2025 to June 2026. No exact duplicates or duplicate listing-month combinations were identified.
+
+Four columns were removed: neighbourhood_group, last_review, reviews_per_month, and license. Latitude, longitude and neighbourhood were retained for geographic analysis. The single missing host_name was recovered from another observation with the same host_id. All 37 missing minimum_nights values were recovered using the median observed value for the same listing across other monthly snapshots. Consequently, no observations were removed during these operations.
+
+Price required additional investigation because 10,667 observations (37.04%) were missing. December 2025, January 2026 and February 2026 contained no observed prices and accounted for 9,427 (88.4%) of all missing price observations. Missingness also showed smaller differences by neighbourhood and room type.
+
+Both same-listing temporal estimation and KNN estimation were investigated. The same-listing approach produced lower validation MAE than the tested KNN model in every observed month. However, because the true prices for December–February are completely unavailable and observed prices changed over time, the missing prices cannot be reliably validated. They were therefore retained as missing rather than replaced with estimated values.
+
+Eight extreme within-listing price changes were flagged for investigation but not automatically removed. This preserves the original observed data while allowing potentially unusual observations to be identified during later analysis.
+
+The final cleaned dataset contains 28,795 rows and 19 columns and is stored as a compressed CSV for space efficiency.
+
 ## Important Columns
 
 | Column Name | Data Type | Description |
