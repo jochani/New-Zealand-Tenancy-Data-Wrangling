@@ -1,7 +1,7 @@
 # New-Zealand-Tenancy-Data-Wrangling
 A uni repostory for the course DATA422
 
-## Dataset
+## Dataset 1
 
 ### Source
 
@@ -9,12 +9,9 @@ This project uses the New Zealand Airbnb listings dataset published by Inside Ai
 
 - **Dataset:** listings.csv
 - **Geographic Coverage:** New Zealand
-- **Dataset Date:** 19 June 2026
+- **Dataset Date:** 19 June 2026 (Quarterly)
 - **Source:** https://insideairbnb.com/get-the-data/
 - **Purpose:** Summary information and metrics for Airbnb listings suitable for data analysis and visualisation.
-
-The dataset is stored locally on each team member's computer and is **not committed to GitHub** because of its size.
-
 
 ## Important Columns
 
@@ -38,3 +35,29 @@ The dataset is stored locally on each team member's computer and is **not commit
 | number_of_reviews_ltm | Integer | Reviews received in the last 12 months | 28 |
 | calculated_host_listings_count | Integer | Total listings managed by the host | 5 |
 | license | String | Property licence or registration number (if available) | ABC12345 |
+
+
+## Dataset 2
+
+**Dataset:** Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv
+- **Dataset Date:** January 2020 to April 2026
+- **Geographic Coverage:** New Zealand 
+- **Source:** https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/
+- **Purpose:** Detailed quarterly tenancy bond statistics and rental price metrics for New Zealand residential properties, categorized by location, dwelling type, and bedroom count.
+
+## Important Columns
+
+| Column Name | Data Type | Description |
+| :--- | :--- | :--- |
+| **TimeFrame** | Date (`YYYY-MM-DD`) | Quarter start date (`2025-10-01` = Q4 2025). |
+| **Location Id** | Numeric | Territorial Authority or Statistical Area code (Statistics NZ / Tenancy Services). |
+| **Dwelling Type** | Categorical | Property classification (`House`, `Apartment`, `Flat`, `Room`, `Boarding House`, `ALL`). |
+| **Number Of Beds** | Categorical / Numeric | Bedroom count (`1`, `2`, `3`, `4`, `5+`, `ALL`). |
+| **Total Bonds** | Integer | New tenancy bonds lodged during the quarter. |
+| **Active Bonds** | Integer | Cumulative active tenancy bonds held at quarter end. |
+| **Closed Bonds** | Integer | Tenancy bonds closed or refunded during the quarter. |
+| **Median Rent** | Currency ($NZD) | Median weekly rent recorded for new bonds lodged in that period. |
+| **Geometric Mean Rent** | Currency ($NZD) | Log-transformed mean weekly rent (minimizes outlier bias). |
+| **Upper Quartile Rent** | Currency ($NZD) | 75th percentile weekly rental price for the region. |
+| **Lower Quartile Rent** | Currency ($NZD) | 25th percentile weekly rental price for the region. |
+| **Log Std Dev Weekly Rent** | Float | Standard deviation of the log of weekly rents (measures price dispersion). |
