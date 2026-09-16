@@ -36,6 +36,10 @@ This project uses the New Zealand Airbnb listings dataset published by Inside Ai
 | calculated_host_listings_count | Integer | Total listings managed by the host | 5 |
 | license | String | Property licence or registration number (if available) | ABC12345 |
 
+## Pre-processing Decision:
+  * Dropped `license` since ther are 100% missing values across all snapshots
+  * Dropped `neighbourhood_group` because it contained one redundant static text `"Christchurch City"` after filtering out the concatenated dataset for Christchurch City only.
+  * Dropped `last_review` and `reviews_per_month` because review activity is outside the focus of the planned rental-price and property-availability analysis.
 
 ## Dataset 2
 
