@@ -177,7 +177,7 @@ plt.ylabel("Number of listings")
 
 plt.tight_layout()
 
-plt.xlim(left=0)
+
 plt.show()
 
 # Find the top 10% by number of reviews
