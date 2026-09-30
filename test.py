@@ -333,15 +333,6 @@ print("\n=== NUMBER OF LISTINGS BY PUBLISH DATE ===")
 #counting how many records were published on each date
 print(df["publish_date"].value_counts())
 
-#
-#print(sorted(df["publish_date"].unique()))
-
-#print((df["days_since_review"] < 0).sum())
-
-#print(
-    #(df["days_since_review"] < 0).mean() * 100
-#)
-
 
 # (3) find how many properties get the highest numbers of reviews in Christchurch
 print("\n=== TOP 10% MOST REVIEWED PROPERTIES IN CHRISTCHURCH ===")
@@ -355,6 +346,12 @@ top_10 = df_cleaned[df_cleaned['number_of_reviews'] >= threshold]
 #display top 10% most reviewed properties in CHC
 print(f"Number of properties in the top 10%: {threshold} properties")
 print(top_10)
+
+# DELIVERABLE 4 - Clean up the airbnb listings
+#remove neighbourhood_group, last_review, reviews_per_month, license fields
+df_cleaned = df_cleaned.drop(columns=["neighbourhood_group", "last_review", "reviews_per_month", "license"])
+print(df_cleaned.columns.tolist())
+
 
 
 
