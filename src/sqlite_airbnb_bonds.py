@@ -13,7 +13,7 @@ price-gap summaries.
 
 Inputs
 ------
-output/processed/christchurch_airbnb_clean_with_sa2.xlsx
+output/processed/christchurch_airbnb_clean_with_sa2.csv
 output/processed/rental_bonds_clean.csv
 
 Outputs
@@ -48,7 +48,7 @@ import pandas as pd
 # ============================================================
 
 AIRBNB_FILE = Path(
-    "output/processed/christchurch_airbnb_clean_with_sa2.xlsx"
+    "output/processed/christchurch_airbnb_clean_with_sa2.csv"
 )
 
 BONDS_FILE = Path(
@@ -93,7 +93,14 @@ BOND_REQUIRED_COLUMNS = {
     "Closed Bonds",
 }
 
-EXPECTED_QUARTERS = {
+EXPECTED_AIRBNB_QUARTERS = {
+    pd.Timestamp("2025-10-01"),
+    pd.Timestamp("2026-01-01"),
+    pd.Timestamp("2026-04-01"),
+    pd.Timestamp("2026-07-01"),
+}
+
+EXPECTED_BOND_QUARTERS = {
     pd.Timestamp("2025-10-01"),
     pd.Timestamp("2026-01-01"),
     pd.Timestamp("2026-04-01"),
@@ -247,12 +254,13 @@ def load_airbnb_data(file_path):
 
     validate_input_file(file_path)
 
-    airbnb_df = pd.read_excel(
+    airbnb_df = pd.read_csv(
         file_path,
         dtype={
             "id": "string",
             "location_id": "string",
         },
+        low_memory=False,
     )
 
     validate_required_columns(
@@ -315,11 +323,11 @@ def add_airbnb_quarter(airbnb_df):
     )
 
     missing_quarters = (
-        EXPECTED_QUARTERS - actual_quarters
+        EXPECTED_AIRBNB_QUARTERS - actual_quarters
     )
 
     unexpected_quarters = (
-        actual_quarters - EXPECTED_QUARTERS
+        actual_quarters - EXPECTED_AIRBNB_QUARTERS
     )
 
     if missing_quarters or unexpected_quarters:
@@ -431,11 +439,11 @@ def prepare_bond_data(bond_df):
     )
 
     missing_quarters = (
-        EXPECTED_QUARTERS - actual_quarters
+        EXPECTED_BOND_QUARTERS - actual_quarters
     )
 
     unexpected_quarters = (
-        actual_quarters - EXPECTED_QUARTERS
+        actual_quarters - EXPECTED_BOND_QUARTERS
     )
 
     if missing_quarters or unexpected_quarters:

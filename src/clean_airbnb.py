@@ -14,7 +14,7 @@ output/christchurch_oct2025_jun2026.csv
 
 Output
 ------
-output/processed/christchurch_airbnb_clean.csv.gz
+output/processed/christchurch_airbnb_clean.csv
 
 Cleaning principles
 -------------------
@@ -40,14 +40,13 @@ import pandas as pd
 # ============================================================
 
 INPUT_FILE = Path(
-    "output/processed/christchurch_oct2025_jun2026.csv"
+    "output/processed/christchurch_airbnb_joined_file.csv"
 )
 
 OUTPUT_FILE = Path(
-    "output/processed/christchurch_airbnb_clean.csv.gz"
+    "output/processed/christchurch_airbnb_clean.csv"
 )
 
-EXPECTED_ROWS = 28_795
 EXPECTED_COLUMNS = 19
 
 EXPECTED_MONTHS = {
@@ -60,6 +59,8 @@ EXPECTED_MONTHS = {
     "04_2026",
     "05_2026",
     "06_2026",
+    "07_2026",
+    "08_2026",
 }
 
 REQUIRED_COLUMNS = {
@@ -166,19 +167,17 @@ def validate_required_columns(airbnb_df):
 
 def validate_dataset_dimensions(airbnb_df):
     """
-    Check that the input matches the expected combined dataset.
+    Validate the joined Airbnb dataset dimensions.
 
-    These dimensions are project-specific sanity checks for the
-    October 2025 to June 2026 source dataset.
+    Row count is intentionally dynamic because new monthly
+    Airbnb datasets can be added to the automated pipeline.
     """
 
     actual_rows, actual_columns = airbnb_df.shape
 
-    if actual_rows != EXPECTED_ROWS:
+    if actual_rows == 0:
         raise ValueError(
-            f"Expected {EXPECTED_ROWS:,} rows, "
-            f"but found {actual_rows:,}. "
-            "Check the combined Airbnb input dataset."
+            "Joined Airbnb dataset contains no records."
         )
 
     if actual_columns != EXPECTED_COLUMNS:
@@ -186,6 +185,11 @@ def validate_dataset_dimensions(airbnb_df):
             f"Expected {EXPECTED_COLUMNS} columns, "
             f"but found {actual_columns}."
         )
+
+    print(
+        f"Dataset dimensions: "
+        f"{actual_rows:,} rows x {actual_columns} columns"
+    )
 
 
 def validate_month_coverage(airbnb_df):
@@ -867,7 +871,7 @@ def save_cleaned_data(
     cleaned_df,
     output_file,
 ):
-    """Save the cleaned dataset without modifying the source file."""
+    """Save cleaned Airbnb data as a standard CSV file."""
 
     output_file.parent.mkdir(
         parents=True,
@@ -877,7 +881,6 @@ def save_cleaned_data(
     cleaned_df.to_csv(
         output_file,
         index=False,
-        compression="gzip",
     )
 
     print_section("OUTPUT")
@@ -896,13 +899,14 @@ def verify_saved_output(
 
     saved_df = pd.read_csv(
         output_file,
-        compression="gzip",
     )
 
     if saved_df.shape != cleaned_df.shape:
         raise ValueError(
             "Saved dataset shape does not match "
-            "the cleaned in-memory dataset."
+            "the cleaned in-memory dataset. "
+            f"Expected {cleaned_df.shape}, "
+            f"found {saved_df.shape}."
         )
 
     if list(saved_df.columns) != list(cleaned_df.columns):
