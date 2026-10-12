@@ -1,0 +1,9 @@
+=== Koordinates API Test Query Summary ===
+Status: SUCCESS
+HTTP Code: 200
+Coordinates Tested: Lat -43.50961, Lon 172.65552
+Extracted Location ID: 325900
+Extracted Location Name: Richmond North (Christchurch City)
+-------------------------------------------
+Raw Response:
+{'vectorQuery': {'layers': {'123515': {'type': 'FeatureCollection', 'crs': {'type': 'name', 'properties': {'name': 'EPSG:4326'}}, 'features': [{'type': 'Feature', 'properties': {'SA22026_V1_00': '325900', 'SA22026_V1_00_NAME': 'Richmond North (Christchurch City)', 'SA22026_V1_00_NAME_ASCII': 'Richmond North (Christchurch City)', 'LAND_AREA_SQ_KM': 1.16625258, 'AREA_SQ_KM': 1.16625258, 'Shape_Length': 4728.7804988186235, 'Shape_Area': 1166252.5865426057}, 'distance': 0, 'id': '325900'}]}}}}

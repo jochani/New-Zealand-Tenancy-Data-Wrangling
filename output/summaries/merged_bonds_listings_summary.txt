@@ -1,0 +1,54 @@
+=== DATASET INSPECTION SUMMARY ===
+Total Rows: 190,094
+Total Columns: 31
+
+--- Column Names & Types ---
+id: int64
+name: str
+host_id: float64
+host_name: str
+neighbourhood: str
+latitude: float64
+longitude: float64
+room_type: str
+price: float64
+minimum_nights: float64
+number_of_reviews: int64
+calculated_host_listings_count: float64
+availability_365: int64
+number_of_reviews_ltm: int64
+month_year: str
+location_id: int64
+location_name: str
+join_timeframe_key: str
+join_location_key: int64
+TimeFrame: str
+Location Id: float64
+Dwelling Type: str
+Number Of Beds: str
+Total Bonds: int64
+Active Bonds: int64
+Closed Bonds: int64
+Median Rent: float64
+Geometric Mean Rent: float64
+Upper Quartile Rent: float64
+Lower Quartile Rent: float64
+Log Std Dev Weekly Rent: float64
+
+--- Missing Values Count ---
+price: 71,312
+minimum_nights: 333
+Number Of Beds: 8,397
+
+--- Numerical Summary Statistics ---
+                 id       host_id       latitude      longitude  ...  Geometric Mean Rent  Upper Quartile Rent  Lower Quartile Rent  Log Std Dev Weekly Rent
+count  1.900940e+05  1.900940e+05  190094.000000  190094.000000  ...        190094.000000        190094.000000        190094.000000            190094.000000
+mean   9.662472e+17  1.373938e+15     -43.530349     172.634928  ...           521.241759           604.117253           468.999390                 0.289976
+std    5.720230e+17  4.809677e+16       0.017134       0.038174  ...           146.770368           166.499517           136.350142                 0.200301
+min    2.040500e+05  5.738200e+04     -43.598330     172.433375  ...            96.000000            98.000000            78.000000                 0.000000
+25%    6.709573e+17  7.121785e+07     -43.536983     172.621690  ...           462.000000           543.000000           424.000000                 0.147400
+50%    1.163370e+18  2.025852e+08     -43.530280     172.638830  ...           515.000000           580.000000           471.000000                 0.245100
+75%    1.424871e+18  4.826711e+08     -43.522510     172.645090  ...           591.000000           663.000000           540.000000                 0.374100
+max    1.709886e+18  1.704737e+18     -43.440617     172.775848  ...          1439.000000          1564.000000          1238.000000                 2.448800
+
+[8 rows x 21 columns]

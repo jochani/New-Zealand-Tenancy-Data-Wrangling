@@ -1,0 +1,24 @@
+
+-- Reproducing KNIME Workflow --
+
+Publish Date: 2026-06-20
+✔ Calculated 'days_since_last_review' and added as a new column.
+✔ Total Number of Christchurch Listings: 35,796
+✔ Top 10% Christchurch Listings with highest number of reviews: 3,579
+
+--- Top 10% Highest Reviewed Listings Preview ---
+
+             id                                         name  number_of_reviews last_review  days_since_last_review
+4770    6467168                            lazy porch studio               1601  2026-08-09                     -50
+18992   6467168                            lazy porch studio               1592  2026-07-08                     -18
+20916   6467168                            lazy porch studio               1584  2026-06-20                       0
+28045   6467168                            lazy porch studio               1570  2026-05-20                      31
+3767   12613591  Airport Studio, King bed. NO CLEANING  FEE.               1555  2026-07-04                     -14
+19235  12613591  Airport Studio, King bed. NO CLEANING  FEE.               1555  2026-07-04                     -14
+47      6467168                            lazy porch studio               1555  2026-04-13                      68
+21765  12613591  Airport Studio, King bed. NO CLEANING  FEE.               1551  2026-06-09                      11
+27006  12613591  Airport Studio, King bed. NO CLEANING  FEE.               1544  2026-05-23                      28
+23216   6467168                            lazy porch studio               1542  2026-03-17                      95
+
+Saved Top 10% dataset to: output\analysis\christchurch_top_10_percent_highest_reviews.csv
+
