@@ -75,3 +75,57 @@ The combined dataset contained **28,795 observations** covering **October 2025 t
 | `Upper Quartile Rent` | Currency ($NZD) | 75th percentile weekly rental price for the region. |
 | `Lower Quartile Rent` | Currency ($NZD) | 25th percentile weekly rental price for the region. |
 | `Log Std Dev Weekly Rent` | Float | Standard deviation of the log of weekly rents (measures price dispersion). |
+
+#### Observations and Changes
+
+1. **Updated reporting period:** The downloaded dataset is labelled as covering Q1 2020 to Q3 2026. However, the current analysis uses Q4 2025, Q1 2026, and Q2 2026 to align with the available rental bond comparison periods.
+
+2. **Quarterly rather than monthly reporting:** Unlike the Airbnb dataset, which contains monthly observations, rental bond statistics are reported quarterly. Airbnb months were mapped to their corresponding quarters to enable temporal matching.
+
+3. **Geographic alignment:** Rental bond records use `Location Id` identifiers, which were standardised and matched with the Statistical Area 2 (SA2) identifiers assigned to Airbnb listings.
+
+4. **Filtering and cleaning:** Records were filtered to Christchurch City and the selected quarters. The analysis retained aggregate records where `Dwelling Type = ALL` and `Number Of Beds = ALL`, avoiding comparisons across overlapping property categories.
+
+5. **Data transformation:** The `TimeFrame` column was converted into a standard date format, location identifiers were normalised, and `Median Nightly Rent` was calculated as `Median Rent / 7` to support a descriptive comparison with Airbnb nightly prices.
+
+6. **Dataset size:** The source dataset contained 226,080 rows and 12 columns. After filtering and transformation, the cleaned dataset contained 4,868 rows and 14 columns, covering 1,807 unique locations.
+
+7. **Integration and unmatched records:** The rental bond dataset was joined with the Airbnb dataset using SA2 identifiers and quarter keys. Of 35,796 Airbnb observations, 21,946 matched rental bond records (61.31%), while 13,850 remained unmatched.
+
+8. **July-August 2026 limitation:** The updated Airbnb dataset includes July and August 2026, but the current cleaned rental bond comparison does not include Q3 2026. These Airbnb observations are preserved through a left join, with unavailable rental bond attributes represented as missing values.
+
+#### Important Consideration
+
+Airbnb prices represent short-term accommodation, whereas rental bond statistics represent longer-term residential rentals. Dividing weekly median rent by seven provides a nightly-equivalent comparison but does not make the two markets directly equivalent.
+
+---
+
+## Team Contributions and Development Branches
+
+This project was developed collaboratively by three team members. Each member worked on their own GitHub branch to maintain individual contributions, support independent development, and facilitate code review before integration into the main repository.
+
+| Team Member | GitHub Branch |
+|---|---|
+| Jayant Ochani | [`jay_deliverable_7`](../../tree/jay_deliverable_7) 
+| Carolina Faka'osi | [`carolina-deliverable3`](../../tree/carolina-deliverable3) 
+| S M Tahmid Shahriar Arpon | [`tahmid_blip`](../../tree/tahmid_blip) 
+
+### Branch Management
+
+- **`main`** - Final integrated version of the project, used for submission.
+- **Individual branches** - Preserve each team member's development work, commits, and implementation history.
+- **Collaboration** - Team members developed and reviewed their contributions before integrating agreed changes into the main branch.
+
+### Project Execution
+
+The final automated data wrangling pipeline can be executed from the repository root (`main`) using:
+
+```bash
+python run_pipeline.py
+```
+
+The pipeline processes the Airbnb and rental bond datasets, performs cleaning and integration, generates SQLite outputs, and updates the analytical plots.
+
+### Contribution History
+
+Individual contributions and development progress can be reviewed through each team member's GitHub branch and commit history.
