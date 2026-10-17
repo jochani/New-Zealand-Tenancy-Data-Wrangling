@@ -102,7 +102,7 @@ Airbnb prices represent short-term accommodation, whereas rental bond statistics
 
 ## Team Contributions and Development Branches
 
-This project was developed collaboratively by **Group 1 - DATA422**. Each team member worked on a dedicated GitHub branch to maintain a clear record of individual contributions, encourage independent development, and facilitate code review and collaboration before integrating the agreed changes into the `main` branch.
+This project was developed collaboratively by **Group 1 (data wranglers) - DATA422**. Each team member worked on a dedicated GitHub branch to maintain a clear record of individual contributions, encourage independent development, and facilitate code review and collaboration before integrating the agreed changes into the `main` branch.
 
 | Team Member | GitHub Branch |
 |---|---|
